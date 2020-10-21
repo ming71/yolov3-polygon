@@ -1,0 +1,4 @@
+numpy
+torch
+opencv-python
+Shapely
