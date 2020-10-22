@@ -938,4 +938,4 @@ def eval_mAP(root_dir, use_07_metric = False, thres = 0.5):
 '''
 
 if __name__ == "__main__":
-    mAP = eval_mAP('/py/YOLOv3-quadrangle/datasets/UCAS_AOD')
+    mAP = eval_mAP('/py/YOLOv3-quadrangle/datasets/UCAS_AOD',use_07_metric=True)

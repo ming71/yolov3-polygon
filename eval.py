@@ -17,11 +17,11 @@ parser.add_argument('-output_folder', type=str, default='datasets/UCAS_AOD/detec
 parser.add_argument('-plot_flag', type=bool, default=False)
 parser.add_argument('-txt_out', type=bool, default=True)
 
-parser.add_argument('-cfg', type=str, default='cfg/yolov3.cfg', help='cfg file path')
+parser.add_argument('-cfg', type=str, default='cfg/yolov3_UCAS_AOD.cfg', help='cfg file path')
 parser.add_argument('-weights_path', type=str, default='weights/best.pt', help='weight file path')
 parser.add_argument('-class_path', type=str, default='data/ucas_aod.names', help='path to class label file')
-parser.add_argument('-conf_thres', type=float, default=0.1, help='object confidence threshold')
-parser.add_argument('-nms_thres', type=float, default=0.2, help='iou threshold for non-maximum suppression')
+parser.add_argument('-conf_thres', type=float, default=0.001, help='object confidence threshold')
+parser.add_argument('-nms_thres', type=float, default=0.5, help='iou threshold for non-maximum suppression')
 parser.add_argument('-batch_size', type=int, default=1, help='size of the batches')
 parser.add_argument('-img_size', type=int, default=608, help='size of each image dimension')
 opt = parser.parse_args()
@@ -122,5 +122,5 @@ def detect(opt):
 if __name__ == '__main__':
 	torch.cuda.empty_cache()
 	detect(opt)
-	mAP = eval_mAP('datasets/UCAS_AOD')
+	mAP = eval_mAP('datasets/UCAS_AOD',use_07_metric = True)
 	print(mAP)
